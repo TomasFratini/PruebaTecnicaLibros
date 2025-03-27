@@ -1,28 +1,21 @@
-import { useEffect } from 'react'
 import './App.css'
-import { Books } from './components/Books'
-import { useBooks } from './hooks/useBooks'
+import { library } from './data/libros.json'
+import { Books } from './components/Books.jsx'
+import { Favorites } from './components/Favorites.jsx'
+import { FavoriteProvider } from './Context/FavoriteProvider.jsx'
 
-function App() {
-
-  const { books, loading, ShowBooks } = useBooks()
-
-  useEffect(() => {
-    ShowBooks()
-  }, [])
-  
-
+function App () {
   return (
     <div className='page'>
       <header>
         <h1>Buscador de libros</h1>
-        <h2>Libros disponibles</h2>
-        <select name="123" id="123">dasd</select>
       </header>
-        <div >
-          {loading ? <p>Cargando...</p> : <Books books={books}/>}
-          
-        </div>
+      <FavoriteProvider>
+        <Books books={library} />
+        <Favorites books={library} />
+
+      </FavoriteProvider>
+
     </div>
   )
 }
