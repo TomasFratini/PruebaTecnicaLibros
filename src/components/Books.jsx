@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { FavoriteContext } from '../Context/FavoriteProvider'
 
-export function Books ({ books }) {
-  const { addFavorite, favorites, removeFavorite } = useContext(FavoriteContext)
+export function Books () {
+  const { addFavorite, favorites, removeFavorite, library } = useContext(FavoriteContext)
 
   const checkBookInFavorites = book => {
     return favorites.some(item => item.book.ISBN === book.book.ISBN)
@@ -11,7 +11,7 @@ export function Books ({ books }) {
   return (
     <div>
       <ul className='books'>
-        {books.map((book) => {
+        {library.map((book) => {
           const isFavorite = checkBookInFavorites(book)
           return (
             <ul style={{ opacity: isFavorite ? '0.1' : null }} key={book.book.ISBN}>

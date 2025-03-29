@@ -4,7 +4,6 @@ import { FavoriteContext } from '../Context/FavoriteProvider'
 
 export const ListFavorites = () => {
   const { favorites } = useContext(FavoriteContext)
-  console.log(favorites)
   return (
     <div className='page'>
       {
