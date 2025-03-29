@@ -6,7 +6,6 @@ export function Favorites () {
 
   return (
     <div>
-      <h2>Favorites</h2>
       <ul className='books'>
         {favorites.map((book) => {
           return (
@@ -14,15 +13,13 @@ export function Favorites () {
               <div>
                 <strong>{book.book.title}</strong> - {book.book.genre}
               </div>
-              <div>
-                <p>{book.book.pages} Pages</p>
-              </div>
               <img src={book.book.cover} alt={book.book.title} />
               <button onClick={() => removeFavorite(book)}> Remover de favorito </button>
             </ul>
           )
         })}
       </ul>
+
     </div>
   )
 }

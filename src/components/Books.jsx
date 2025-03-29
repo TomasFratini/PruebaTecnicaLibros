@@ -14,12 +14,9 @@ export function Books ({ books }) {
         {books.map((book) => {
           const isFavorite = checkBookInFavorites(book)
           return (
-            <ul key={book.book.ISBN}>
+            <ul style={{ opacity: isFavorite ? '0.1' : null }} key={book.book.ISBN}>
               <div>
                 <strong>{book.book.title}</strong> - {book.book.genre}
-              </div>
-              <div>
-                <p>{book.book.pages} Pages</p>
               </div>
               <img src={book.book.cover} alt={book.book.title} />
               <div>
@@ -29,7 +26,7 @@ export function Books ({ books }) {
                     : addFavorite(book)
                 }}
                 >
-                  {isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                  {isFavorite ? 'Borrar de favoritos' : 'Agregar a favoritos'}
                 </button>
               </div>
             </ul>
