@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { FavoriteContext } from '../Context/FavoriteProvider'
+import { FavoriteContext } from '../Context/favorite'
 
-export function Books () {
-  const { addFavorite, favorites, removeFavorite, library } = useContext(FavoriteContext)
+export function Books ({ books }) {
+  const { addFavorite, favorites, removeFavorite } = useContext(FavoriteContext)
 
   const checkBookInFavorites = book => {
     return favorites.some(item => item.book.ISBN === book.book.ISBN)
@@ -11,7 +11,7 @@ export function Books () {
   return (
     <div>
       <ul className='books'>
-        {library.map((book) => {
+        {books.map((book) => {
           const isFavorite = checkBookInFavorites(book)
           return (
             <ul style={{ opacity: isFavorite ? '0.1' : null }} key={book.book.ISBN}>
@@ -19,6 +19,7 @@ export function Books () {
                 <strong>{book.book.title}</strong> - {book.book.genre}
               </div>
               <img src={book.book.cover} alt={book.book.title} />
+              <span>{book.book.pages} paginas</span>
               <div>
                 <button onClick={() => {
                   isFavorite

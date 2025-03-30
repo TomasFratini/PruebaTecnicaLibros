@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { Link } from 'react-router'
-import { FavoriteContext } from '../Context/FavoriteProvider'
+import { FavoriteContext } from '../Context/favorite'
+import { Filters } from './Filters'
 
 export function NavBar () {
   const { favorites, library } = useContext(FavoriteContext)
@@ -11,6 +12,7 @@ export function NavBar () {
       <button>
         <Link to='/favorites'>Favoritos ({favorites.length})</Link>
       </button>
+      <Filters />
 
     </header>
 
