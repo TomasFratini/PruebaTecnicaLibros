@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { FavoriteContext } from '../Context/favorite'
 
 export function Books ({ books }) {
-  const { addFavorite, favorites, removeFavorite } = useContext(FavoriteContext)
+  const { addFavorite, favorites } = useContext(FavoriteContext)
 
   const checkBookInFavorites = book => {
     return favorites.some(item => item.book.ISBN === book.book.ISBN)
@@ -18,16 +18,16 @@ export function Books ({ books }) {
               <div>
                 <strong>{book.book.title}</strong> - {book.book.genre}
               </div>
-              <img src={book.book.cover} alt={book.book.title} />
-              <span>{book.book.pages} paginas</span>
+              <img className='img' src={book.book.cover} alt={book.book.title} />
+              <div>{book.book.pages} paginas</div>
               <div>
                 <button onClick={() => {
                   isFavorite
-                    ? removeFavorite(book)
+                    ? <span>Agregado a favoritos</span>
                     : addFavorite(book)
                 }}
                 >
-                  {isFavorite ? 'Borrar de favoritos' : 'Agregar a favoritos'}
+                  {isFavorite ? 'Agregado a favoritos' : 'Agregar a favoritos'}
                 </button>
               </div>
             </ul>

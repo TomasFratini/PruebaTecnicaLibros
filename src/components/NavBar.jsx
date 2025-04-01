@@ -8,10 +8,10 @@ export function NavBar () {
   return (
     <header className='page'>
       <h1>Busca y guarda tu libro favorito</h1>
-      <button><Link to='/'>Lista disponible ({library.length - favorites.length})</Link></button>
-      <button>
-        <Link to='/favorites'>Favoritos ({favorites.length})</Link>
-      </button>
+      <Link className='button' to='/'>Lista disponible ({library.length - favorites.length})</Link>
+
+      <Link className='button' to='/favorites'>Favoritos ({favorites.length})</Link>
+
       <Filters />
 
     </header>

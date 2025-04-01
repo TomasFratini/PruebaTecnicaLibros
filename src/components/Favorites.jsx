@@ -13,8 +13,11 @@ export function Favorites () {
               <div>
                 <strong>{book.book.title}</strong> - {book.book.genre}
               </div>
-              <img src={book.book.cover} alt={book.book.title} />
-              <button onClick={() => removeFavorite(book)}> Remover de favorito </button>
+              <img className='img' src={book.book.cover} alt={book.book.title} />
+              <div>
+
+                <button onClick={() => removeFavorite(book)}> Remover de favoritos </button>
+              </div>
             </ul>
           )
         })}
