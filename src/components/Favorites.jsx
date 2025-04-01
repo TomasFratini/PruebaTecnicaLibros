@@ -1,13 +1,18 @@
 import { useContext } from 'react'
 import { FavoriteContext } from '../Context/favorite'
+import { useFilters } from '../hooks/useFilters'
 
 export function Favorites () {
   const { favorites, removeFavorite } = useContext(FavoriteContext)
 
+  const { filterBooks } = useFilters()
+
+  const favoritosFilters = filterBooks(favorites)
+
   return (
     <div>
       <ul className='books'>
-        {favorites.map((book) => {
+        {favoritosFilters.map((book) => {
           return (
             <ul key={book.book.ISBN}>
               <div>
